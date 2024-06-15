@@ -1,8 +1,8 @@
-const data = require("../../data");
+const data = require("../../pg-data");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const id = parseInt(req.url.split("/")[2]);
-  const success = data.deleteUser(id);
+  const success = await data.deleteUser(id);
 
   if (success) {
     res.writeHead(204);

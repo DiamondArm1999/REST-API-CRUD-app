@@ -1,0 +1,23 @@
+{
+  "name": "hotel-ru-crud-api",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiamondArm1999/REST-API-CRUD-app.git"
+  },
+  "author": "Imanov Alibek <imanov.alibek.99@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiamondArm1999/REST-API-CRUD-app/issues"
+  },
+  "homepage": "https://github.com/DiamondArm1999/REST-API-CRUD-app#readme",
+  "description": "",
+  "dependencies": {
+    "pg": "^8.12.0"
+  }
+}

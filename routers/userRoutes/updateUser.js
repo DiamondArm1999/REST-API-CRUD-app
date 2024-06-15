@@ -1,4 +1,4 @@
-const data = require("../../data");
+const data = require("../../pg-data");
 
 module.exports = (req, res) => {
   const id = parseInt(req.url.split("/")[2]);
@@ -13,7 +13,7 @@ module.exports = (req, res) => {
     body += chunk;
   });
   // Когда все данные будут получены, мы можем обработать их. Ловим конец данных.
-  req.on("end", () => {
+  req.on("end", async () => {
     // парсим тело запроса и инициализируем объект для хранения обновленных данных
     const parsedBody = new URLSearchParams(body);
     const updatedData = {};
@@ -25,7 +25,7 @@ module.exports = (req, res) => {
     });
 
     // наконец-то обновляем пользователя импортированным методом
-    const updatedUser = data.updateUser(id, updatedData);
+    const updatedUser = await data.updateUser(id, updatedData);
 
     // обрабатываем результат
     if (updatedUser) {

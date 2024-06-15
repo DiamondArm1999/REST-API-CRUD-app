@@ -1,4 +1,4 @@
-const data = require("../../data");
+const data = require("../../pg-data");
 
 module.exports = (req, res) => {
   let body = "";
@@ -7,14 +7,14 @@ module.exports = (req, res) => {
     body += chunk;
   });
 
-  req.on("end", () => {
+  req.on("end", async () => {
     const parsedBody = new URLSearchParams(body);
     const name = parsedBody.get("name");
     const age = parsedBody.get("age");
 
     if (name && age) {
       const user = { name, age: parseInt(age) };
-      data.addUser(user);
+      await data.addUser(user);
       res.writeHead(201);
       res.end(JSON.stringify(user));
     } else {

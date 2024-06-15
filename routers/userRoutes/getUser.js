@@ -1,8 +1,8 @@
-const data = require("../../data");
+const data = require("../../pg-data");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const id = parseInt(req.url.split("/")[2]);
-  const user = data.getUserById(id);
+  const user = await data.getUserById(id);
 
   if (user) {
     res.writeHead(200);
